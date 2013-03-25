@@ -1,0 +1,27 @@
+# Shorten.Entity.Url.dcm.yml
+Shorten\Entity\Url:
+  type: entity
+  table: shorten_urls
+  repositoryClass: Shorten\Entity\UrlRepository
+  indexes:
+    original_index:
+      columns: [original]
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    original:
+      type: string
+      length: 255
+      unique: true
+  oneToMany:
+    links:
+      targetEntity: Shorten\Entity\Link
+      mappedBy: url
+ 
+    
+    
+
+

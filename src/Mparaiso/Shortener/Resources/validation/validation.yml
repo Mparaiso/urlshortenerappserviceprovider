@@ -1,0 +1,9 @@
+Shorten\Model\ShortenModel:
+  properties:
+    original:
+      - NotBlank: ~
+      - Url: ~
+      - MinLength: 5
+    custom:  
+      - MinLength: 4
+    

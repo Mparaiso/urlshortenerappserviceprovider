@@ -1,0 +1,9 @@
+<phpunit
+    bootstrap="tests/Bootstrap.php"
+>
+    <testsuites>
+        <testsuite name="UrlShortenAppServiceProvider">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

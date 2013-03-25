@@ -1,0 +1,7 @@
+{% for link in links %}
+---------------------------------------
+id       : {{ link.id }}
+link     : {{ link.identifier }}
+url      : {{ link.url.getOriginal() }}
+creation : {{ link.createdAt|date() }}
+{% endfor %}

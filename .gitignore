@@ -1,0 +1,5 @@
+vendor
+vendor/*
+composer.lock
+temp
+temp/*

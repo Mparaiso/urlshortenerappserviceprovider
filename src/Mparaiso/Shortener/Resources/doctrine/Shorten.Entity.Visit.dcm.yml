@@ -1,0 +1,25 @@
+# Shorten.Entity.Visit.dcm.yml
+Shorten\Entity\Visit:
+  type: entity
+  table: shorten_visits
+  repositoryClass: Shorten\Entity\VisitRepository
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    created_at:
+      type: datetime
+    ip:
+      type: string
+      length: 128
+    country:
+      type: string
+      length: 256
+  manyToOne:
+    link:
+      targetEntity: Shorten\Entity\Link
+      inversedBy: visits
+
+

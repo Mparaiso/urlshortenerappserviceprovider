@@ -1,0 +1,56 @@
+parameters:
+    # doctrine configuration
+    doctrine.setup.class: Doctrine\ORM\Tools\Setup
+    doctrine.setup.configuration_class: Doctrine\ORM\Configuration
+
+    doctrine.em.proxy_dir: "%app.root_dir%/../cache/"
+    doctrine.em.is_dev_mode: %app.debug%
+    doctrine.em.factory.class: Doctrine\ORM\EntityManager
+    doctrine.em.factory.method: create
+
+    doctrine.em.yaml_config.method: createYAMLMetadataConfiguration
+    doctrine.em.yaml_config.path: 
+        - "%app.root_dir%/Shorten/Resources/doctrine/"
+
+    doctrine.em.xml_config.method: createXMLMetadataConfiguration
+
+    doctrine.em.annotation_config.method: createAnnotationMetadataConfiguration
+
+    doctrine.em.options:
+        driver: %app.driver%
+        host: %app.host%        
+        dbname: %app.dbname% 
+        user: %app.user% 
+        password: %app.password% 
+        port: %app.port%
+        memory: true
+
+services:
+
+    doctrine.logger:
+        class: Mparaiso\Doctrine\ORM\Logger\MonologSQLLogger
+        arguments: [ @monolog ]
+    
+    doctrine.base_config:
+        class: %doctrine.setup.configuration_class%
+        factory_class: %doctrine.setup.class%
+
+    doctrine.yaml_config:
+        #@note @symfony dependency injection : service definition inheritance
+        parent: doctrine.base_config
+        factory_method: createYAMLMetadataConfiguration
+        arguments:
+            - %doctrine.em.yaml_config.path%
+            - %doctrine.em.is_dev_mode%
+            - %doctrine.em.proxy_dir%
+        calls:
+          - [ setSQLLogger, [ @doctrine.logger ] ]
+
+    doctrine.em:
+        class: %doctrine.em.factory.class%
+        factory_class: %doctrine.em.factory.class%
+        factory_method: create
+        arguments: [%doctrine.em.options%,@doctrine.yaml_config]
+
+
+

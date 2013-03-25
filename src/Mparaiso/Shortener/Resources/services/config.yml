@@ -1,0 +1,25 @@
+# Shorten/Resources/services/config.yml
+parameters:
+  cache_path: "%app.root_dir%/../cache/"
+
+imports:
+- { resource: doctrine.yml }
+- { resource: monolog.yml }
+
+services:
+    
+  shortener:
+    class: Shorten\Service\ShortenerService
+    arguments: [ @link_data_provider, @url_data_provider, @visit_data_provider ]
+    
+  link_data_provider:
+    class: Shorten\DataAccessLayer\LinkDataProvider
+    arguments: [@doctrine.em]
+    
+  url_data_provider:
+    class: Shorten\DataAccessLayer\UrlDataProvider
+    arguments: [@doctrine.em]
+    
+  visit_data_provider:
+    class: Shorten\DataAccessLayer\VisitDataProvider
+    arguments: [@doctrine.em]

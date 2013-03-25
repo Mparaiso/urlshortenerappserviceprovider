@@ -1,0 +1,18 @@
+parameters:
+  monolog.name: "my app"
+  monolog.logfile: "%app.root_dir%/../log/log.txt"
+  
+services:
+  monolog.debug.handler:
+    class: Symfony\Bridge\Monolog\Handler\DebugHandler
+    
+  monolog.handler:
+    class: Monolog\Handler\StreamHandler
+    arguments: [ %monolog.logfile% ]
+    
+  monolog:
+    class : Symfony\Bridge\Monolog\Logger
+    arguments: [ %monolog.name% ]
+    calls:
+      - [pushHandler,[ @monolog.handler ] ]
+      - [pushHandler, [ @monolog.debug.handler ] ]
