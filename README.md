@@ -1,6 +1,8 @@
 Url Shortener App Service provider
 ==================================
 
+[![Build Status](https://travis-ci.org/Mparaiso/urlshortenerappserviceprovider.png?branch=master)](https://travis-ci.org/Mparaiso/urlshortenerappserviceprovider)
+
 a url shortener service for your silex application
 --------------------------------------------------
 
