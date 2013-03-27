@@ -42,8 +42,8 @@ you can use the database database/db.sql or use the doctrine console
 
 ### Basic API
 
-GET "/" : url shortener form
-POST "/" : create a new short url
-GET "/{identifier}" : redirect to an shortened url according to its identifier
++ GET "/" : url shortener form
++ POST "/" : create a new short url
++ GET "/{identifier}" : redirect to an shortened url according to its identifier
 
 You can change the root route by mounting  ```$app['url_shortener.controller']``` to a custom route
