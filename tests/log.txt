@@ -253,3 +253,34 @@
 )
  [] []
 [2013-03-27 16:00:37] myapp.INFO: < 200 [] []
+[2013-03-27 16:13:17] myapp.INFO: Matched route "url_shortener_index" (parameters: "_controller": "[{},"_index"]", "_route": "url_shortener_index") [] []
+[2013-03-27 16:13:17] myapp.INFO: > GET / [] []
+[2013-03-27 16:13:18] myapp.INFO: < 200 [] []
+[2013-03-27 16:13:18] myapp.INFO: Matched route "url_shortener_index" (parameters: "_controller": "[{},"_index"]", "_route": "url_shortener_index") [] []
+[2013-03-27 16:13:18] myapp.INFO: > POST / [] []
+[2013-03-27 16:13:18] myapp.INFO: Array
+(
+    [ShortenModel] => Array
+        (
+            [original] => http://yahoo.fr
+            [custom] => 
+            [_token] => 82b892d08c94cb6c7db91985ef7d78b77a642899
+        )
+
+)
+ [] []
+[2013-03-27 16:13:18] myapp.INFO: < 200 [] []
+[2013-03-27 16:13:19] myapp.INFO: Matched route "url_shortener_index" (parameters: "_controller": "[{},"_index"]", "_route": "url_shortener_index") [] []
+[2013-03-27 16:13:19] myapp.INFO: > POST / [] []
+[2013-03-27 16:13:19] myapp.INFO: Array
+(
+    [ShortenModel] => Array
+        (
+            [original] => http://google.com
+            [custom] => goog
+            [_token] => 82b892d08c94cb6c7db91985ef7d78b77a642899
+        )
+
+)
+ [] []
+[2013-03-27 16:13:19] myapp.INFO: < 200 [] []

@@ -1,7 +1,7 @@
 # Mparaiso\Shortener.Entity.Url.dcm.yml
 Mparaiso\Shortener\Entity\Url:
   type: entity
-  table: shorten_urls
+  table: url_shortener_urls
   #repositoryClass: Mparaiso\Shortener\Entity\UrlRepository
   indexes:
     original_index:

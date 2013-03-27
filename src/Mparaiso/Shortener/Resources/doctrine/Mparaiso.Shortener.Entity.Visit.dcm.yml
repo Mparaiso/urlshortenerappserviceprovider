@@ -1,7 +1,7 @@
 # Mparaiso\Shortener.Entity.Visit.dcm.yml
 Mparaiso\Shortener\Entity\Visit:
   type: entity
-  table: shorten_visits
+  table: url_shortener_visits
   #repositoryClass: Mparaiso\Shortener\Entity\VisitRepository
   id:
     id:
