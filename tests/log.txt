@@ -284,3 +284,143 @@
 )
  [] []
 [2013-03-27 16:13:19] myapp.INFO: < 200 [] []
+[2013-03-27 16:16:26] myapp.INFO: Matched route "url_shortener_index" (parameters: "_controller": "[{},"_index"]", "_route": "url_shortener_index") [] []
+[2013-03-27 16:16:26] myapp.INFO: > GET / [] []
+[2013-03-27 16:16:28] myapp.INFO: < 200 [] []
+[2013-03-27 16:16:59] myapp.INFO: Matched route "url_shortener_index" (parameters: "_controller": "[{},"_index"]", "_route": "url_shortener_index") [] []
+[2013-03-27 16:16:59] myapp.INFO: > POST / [] []
+[2013-03-27 16:16:59] myapp.INFO: Array
+(
+    [ShortenModel] => Array
+        (
+            [original] => http://yahoo.fr
+            [custom] => yahoo
+            [_token] => 31b424e4f7eb2baff00d8f0ef77b0d8b60832a5e
+        )
+
+)
+ [] []
+[2013-03-27 16:16:59] myapp.CRITICAL: Doctrine\DBAL\DBALException: An exception occurred while executing 'SELECT t0.id AS id1, t0.original AS original2 FROM url_shortener_urls t0 WHERE t0.original = ? LIMIT 1' with params {"1":"http:\/\/yahoo.fr"}:
+
+SQLSTATE[HY000]: General error: 1 no such table: url_shortener_urls (uncaught exception) at C:\projects\categories\php\libraries\mparaiso-urlshortenerappserviceprovider\vendor\doctrine\dbal\lib\Doctrine\DBAL\DBALException.php line 47 [] []
+[2013-03-27 16:16:59] myapp.INFO: < 500 [] []
+[2013-03-27 16:22:15] myapp.INFO: Matched route "url_shortener_index" (parameters: "_controller": "[{},"_index"]", "_route": "url_shortener_index") [] []
+[2013-03-27 16:22:15] myapp.INFO: > GET / [] []
+[2013-03-27 16:22:17] myapp.INFO: < 200 [] []
+[2013-03-27 16:22:28] myapp.INFO: Matched route "url_shortener_redirect" (parameters: "_controller": "[{},"_redirect"]", "identifier": "yahoo", "_route": "url_shortener_redirect") [] []
+[2013-03-27 16:22:28] myapp.INFO: > GET /yahoo [] []
+[2013-03-27 16:22:28] myapp.CRITICAL: Doctrine\DBAL\DBALException: An exception occurred while executing 'SELECT t0.id AS id1, t0.is_custom AS is_custom2, t0.identifier AS identifier3, t0.created_at AS created_at4, t0.url_id AS url_id5 FROM url_shortener_links t0 WHERE t0.identifier = ? LIMIT 1' with params {"1":"yahoo"}:
+
+SQLSTATE[HY000]: General error: 1 no such table: url_shortener_links (uncaught exception) at C:\projects\categories\php\libraries\mparaiso-urlshortenerappserviceprovider\vendor\doctrine\dbal\lib\Doctrine\DBAL\DBALException.php line 47 [] []
+[2013-03-27 16:22:28] myapp.INFO: < 500 [] []
+[2013-03-27 16:22:44] myapp.INFO: Matched route "url_shortener_index" (parameters: "_controller": "[{},"_index"]", "_route": "url_shortener_index") [] []
+[2013-03-27 16:22:44] myapp.INFO: > GET / [] []
+[2013-03-27 16:22:46] myapp.INFO: < 200 [] []
+[2013-03-27 16:22:46] myapp.INFO: Matched route "url_shortener_index" (parameters: "_controller": "[{},"_index"]", "_route": "url_shortener_index") [] []
+[2013-03-27 16:22:46] myapp.INFO: > POST / [] []
+[2013-03-27 16:22:46] myapp.INFO: Array
+(
+    [ShortenModel] => Array
+        (
+            [original] => http://yahoo.fr
+            [custom] => 
+            [_token] => 9048ec16ba79f6954e36bd79132f0a0c8cad847c
+        )
+
+)
+ [] []
+[2013-03-27 16:22:47] myapp.INFO: < 200 [] []
+[2013-03-27 16:22:47] myapp.INFO: Matched route "url_shortener_index" (parameters: "_controller": "[{},"_index"]", "_route": "url_shortener_index") [] []
+[2013-03-27 16:22:47] myapp.INFO: > POST / [] []
+[2013-03-27 16:22:47] myapp.INFO: Array
+(
+    [ShortenModel] => Array
+        (
+            [original] => http://google.com
+            [custom] => goog
+            [_token] => 9048ec16ba79f6954e36bd79132f0a0c8cad847c
+        )
+
+)
+ [] []
+[2013-03-27 16:22:47] myapp.INFO: < 200 [] []
+[2013-03-27 16:23:38] myapp.INFO: Matched route "url_shortener_redirect" (parameters: "_controller": "[{},"_redirect"]", "identifier": "yahoo", "_route": "url_shortener_redirect") [] []
+[2013-03-27 16:23:38] myapp.INFO: > GET /yahoo [] []
+[2013-03-27 16:23:39] myapp.CRITICAL: Doctrine\DBAL\DBALException: An exception occurred while executing 'SELECT t0.id AS id1, t0.is_custom AS is_custom2, t0.identifier AS identifier3, t0.created_at AS created_at4, t0.url_id AS url_id5 FROM url_shortener_links t0 WHERE t0.identifier = ? LIMIT 1' with params {"1":"yahoo"}:
+
+SQLSTATE[HY000]: General error: 1 no such table: url_shortener_links (uncaught exception) at C:\projects\categories\php\libraries\mparaiso-urlshortenerappserviceprovider\vendor\doctrine\dbal\lib\Doctrine\DBAL\DBALException.php line 47 [] []
+[2013-03-27 16:23:39] myapp.INFO: < 500 [] []
+[2013-03-27 16:23:44] myapp.INFO: Matched route "url_shortener_index" (parameters: "_controller": "[{},"_index"]", "_route": "url_shortener_index") [] []
+[2013-03-27 16:23:44] myapp.INFO: > GET / [] []
+[2013-03-27 16:23:47] myapp.INFO: < 200 [] []
+[2013-03-27 16:25:49] myapp.INFO: Matched route "url_shortener_index" (parameters: "_controller": "[{},"_index"]", "_route": "url_shortener_index") [] []
+[2013-03-27 16:25:49] myapp.INFO: > GET / [] []
+[2013-03-27 16:25:51] myapp.INFO: < 200 [] []
+[2013-03-27 16:26:08] myapp.INFO: Matched route "url_shortener_index" (parameters: "_controller": "[{},"_index"]", "_route": "url_shortener_index") [] []
+[2013-03-27 16:26:08] myapp.INFO: > POST / [] []
+[2013-03-27 16:26:08] myapp.INFO: Array
+(
+    [ShortenModel] => Array
+        (
+            [original] => http://yahoo.fr
+            [custom] => yahoo
+            [_token] => 31b424e4f7eb2baff00d8f0ef77b0d8b60832a5e
+        )
+
+)
+ [] []
+[2013-03-27 16:26:08] myapp.CRITICAL: Doctrine\DBAL\DBALException: An exception occurred while executing 'SELECT t0.id AS id1, t0.original AS original2 FROM url_shortener_urls t0 WHERE t0.original = ? LIMIT 1' with params {"1":"http:\/\/yahoo.fr"}:
+
+SQLSTATE[HY000]: General error: 1 no such table: url_shortener_urls (uncaught exception) at C:\projects\categories\php\libraries\mparaiso-urlshortenerappserviceprovider\vendor\doctrine\dbal\lib\Doctrine\DBAL\DBALException.php line 47 [] []
+[2013-03-27 16:26:08] myapp.INFO: < 500 [] []
+[2013-03-27 16:28:36] myapp.INFO: Matched route "url_shortener_index" (parameters: "_controller": "[{},"_index"]", "_route": "url_shortener_index") [] []
+[2013-03-27 16:28:36] myapp.INFO: > GET / [] []
+[2013-03-27 16:28:37] myapp.INFO: < 200 [] []
+[2013-03-27 16:28:49] myapp.INFO: Matched route "url_shortener_index" (parameters: "_controller": "[{},"_index"]", "_route": "url_shortener_index") [] []
+[2013-03-27 16:28:49] myapp.INFO: > POST / [] []
+[2013-03-27 16:28:49] myapp.INFO: Array
+(
+    [ShortenModel] => Array
+        (
+            [original] => http://yahoo.fr
+            [custom] => yahoo
+            [_token] => 31b424e4f7eb2baff00d8f0ef77b0d8b60832a5e
+        )
+
+)
+ [] []
+[2013-03-27 16:28:49] myapp.CRITICAL: Doctrine\DBAL\DBALException: An exception occurred while executing 'SELECT t0.id AS id1, t0.original AS original2 FROM url_shortener_urls t0 WHERE t0.original = ? LIMIT 1' with params {"1":"http:\/\/yahoo.fr"}:
+
+SQLSTATE[HY000]: General error: 1 no such table: url_shortener_urls (uncaught exception) at C:\projects\categories\php\libraries\mparaiso-urlshortenerappserviceprovider\vendor\doctrine\dbal\lib\Doctrine\DBAL\DBALException.php line 47 [] []
+[2013-03-27 16:28:49] myapp.INFO: < 500 [] []
+[2013-03-27 16:31:56] myapp.INFO: Matched route "url_shortener_index" (parameters: "_controller": "[{},"_index"]", "_route": "url_shortener_index") [] []
+[2013-03-27 16:31:56] myapp.INFO: > GET / [] []
+[2013-03-27 16:31:58] myapp.INFO: < 200 [] []
+[2013-03-27 16:31:59] myapp.INFO: Matched route "url_shortener_index" (parameters: "_controller": "[{},"_index"]", "_route": "url_shortener_index") [] []
+[2013-03-27 16:31:59] myapp.INFO: > POST / [] []
+[2013-03-27 16:31:59] myapp.INFO: Array
+(
+    [ShortenModel] => Array
+        (
+            [original] => http://yahoo.fr
+            [custom] => 
+            [_token] => 114f1b4469587a6f15921c066b2d173add4a8fb5
+        )
+
+)
+ [] []
+[2013-03-27 16:31:59] myapp.INFO: < 200 [] []
+[2013-03-27 16:31:59] myapp.INFO: Matched route "url_shortener_index" (parameters: "_controller": "[{},"_index"]", "_route": "url_shortener_index") [] []
+[2013-03-27 16:31:59] myapp.INFO: > POST / [] []
+[2013-03-27 16:31:59] myapp.INFO: Array
+(
+    [ShortenModel] => Array
+        (
+            [original] => http://google.com
+            [custom] => goog
+            [_token] => 114f1b4469587a6f15921c066b2d173add4a8fb5
+        )
+
+)
+ [] []
+[2013-03-27 16:31:59] myapp.INFO: < 200 [] []

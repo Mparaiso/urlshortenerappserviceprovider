@@ -41,7 +41,7 @@ class Bootstrap
         $app->register(new DoctrineServiceProvider, array(
             "db.options" => array(
                 "driver" => "pdo_sqlite",
-                "memory" => TRUE,
+                "path" => 'url_shortener.sqlite',
             )
         ));
         $app->register(new DoctrineORMServiceProvider);

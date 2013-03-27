@@ -18,13 +18,12 @@ status: work in progress
 
 database:
 
-you can use the database database/db.sql or use the doctrine console
+you can use the file ```database/db.sql``` or use the doctrine console
 
         php console.php orm:schema-tool:create
 
 ### Basic usage:
 
-        use Mparaiso\Utils\Validator\CustomLoaderChain;
         $autoload = require __DIR__ . "/../vendor/autoload.php";
         !defined("ROOT") AND define("ROOT", __DIR__);
         $app = new \Silex\Application;
