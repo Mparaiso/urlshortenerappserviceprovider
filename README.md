@@ -4,6 +4,9 @@ Url Shortener App Service provider
 a url shortener service for your silex application
 --------------------------------------------------
 
+this provider provides your application a complete url shortener service
+for your application , backed by doctrine ORM.
+
 author : MParaiso
 
 contact: mparaiso@online.fr
@@ -18,6 +21,7 @@ you can use the database database/db.sql or use the doctrine console
 
 ### Basic usage:
 
+        use Mparaiso\Utils\Validator\CustomLoaderChain;
         $autoload = require __DIR__ . "/../vendor/autoload.php";
         !defined("ROOT") AND define("ROOT", __DIR__);
         $app = new \Silex\Application;
@@ -25,9 +29,9 @@ you can use the database database/db.sql or use the doctrine console
         $app->register(new MonologServiceProvider, array('monolog.logfile' => ROOT.'/log.txt'));
         $app->register(new UrlGeneratorServiceProvider);
         $app->register(new ConsoleServiceProvider);
-        $app->register(new SessionServiceProvider,array('session.test'=>TRUE));
+        $app->register(new SessionServiceProvider);
         $app->register(new TranslationServiceProvider);
-        $app->register(new TwigServiceProvider,array("twig.options"=>array("path"=>ROOT)));
+        $app->register(new TwigServiceProvider);
         $app->register(new FormServiceProvider);
         $app->register(new DoctrineServiceProvider, array(
             "db.options" => array(

@@ -2,6 +2,8 @@
 
 namespace Mparaiso\Provider;
 use Mparaiso\Shortener\Controller\UrlShortenerController;
+use Symfony\Component\Validator\Mapping\ClassMetadataFactory;
+use Symfony\Component\Validator\Mapping\Loader\LoaderChain;
 use Mparaiso\Shortener\Service\CountryService;
 use Mparaiso\Shortener\Command\ListLinksCommand;
 use Mparaiso\Shortener\Command\ShortenCommand;
@@ -45,8 +47,8 @@ class UrlShortenerAppServiceProvider implements ServiceProviderInterface
     public function register(Application $app)
     {
         $app["url_shortener.ns"]      = $ns = $this->ns;
-        $app["$ns.controller"]        = $app->share(function ($app)use($ns) {
-            return new UrlShortenerController($app[$ns.'.shortener_service'], $app["url_shortener.ns"]);
+        $app["$ns.controller"]        = $app->share(function ($app) use ($ns) {
+            return new UrlShortenerController($app[$ns . '.shortener_service'], $app["url_shortener.ns"]);
         });
         $app["$ns.shortener_service"] = $app->share(function ($app) {
             return new ShortenerService($app['orm.em']);
@@ -82,5 +84,14 @@ class UrlShortenerAppServiceProvider implements ServiceProviderInterface
             new ShortenCommand,
             new ListLinksCommand,
         ));
+
+//        $factory = $app['"validator.mapping.class_metadata_factory"'];
+//        if(! $factory instanceof LoaderChain ){
+//            $app['logger']->info('$app["validator.mapping.class_metadata_factory"] should be an instance of Symfony\Component\Validator\Mapping\Loader\LoaderChain');
+//        }else{
+//            /* @var $factory \Symfony\Component\Validator\Mapping\Loader\LoaderChain */
+//            $factory->loadClassMetadata(new ClassMetadataFactory(new YamlFileLoader(__DIR__."/Shorten/Resources/validation/validation.yml")));
+//        }
+
     }
 }

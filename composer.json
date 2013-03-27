@@ -25,8 +25,10 @@
         "mparaiso/doctrineormserviceprovider":"*@dev",
         "mparaiso/consoleserviceprovider":"*@dev",
         "symfony/twig-bridge":"2.2.*",
+        "symfony/monolog-bridge":"2.2.*",
         "doctrine/orm":"2.*",
         "symfony/yaml":"2.2.*",
+        "symfony/config":"2.2.*",
         "symfony/browser-kit":"2.2.*",
         "symfony/translation":"2.2.*",
         "guzzle/guzzle":"*"

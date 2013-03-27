@@ -1,10 +1,16 @@
 <?php
 use Mparaiso\Provider\ConsoleServiceProvider;
+use Mparaiso\Utils\Validator\CustomLoaderChain;
+use Symfony\Component\Validator\Mapping\ClassMetadataFactory;
+use Symfony\Component\Validator\Mapping\Loader\StaticMethodLoader;
+use Symfony\Component\Validator\Mapping\Loader\XmlFileLoader;
+use Symfony\Component\Validator\Mapping\Loader\YamlFileLoader;
+use Symfony\Component\Validator\Mapping\Loader\LoaderChain;
+use Silex\Provider\ValidatorServiceProvider;
 use Silex\Provider\TranslationServiceProvider;
 use Silex\Provider\SessionServiceProvider;
 use Silex\Provider\FormServiceProvider;
 use Silex\Provider\MonologServiceProvider;
-use Mparaiso\Shortener\Controller\UrlShortenerController;
 use Silex\Provider\UrlGeneratorServiceProvider;
 use Silex\Provider\TwigServiceProvider;
 use Doctrine\ORM\Tools\SchemaTool;
@@ -40,6 +46,19 @@ class Bootstrap
         ));
         $app->register(new DoctrineORMServiceProvider);
         $app->register(new UrlShortenerAppServiceProvider);
+        $app->register(new ValidatorServiceProvider);
+        /*$app->register(new ValidatorServiceProvider, array(
+            "validator.mapping.chain_loader" => $app->share(function ($app) {
+                return new CustomLoaderChain(
+                    array(
+                        new StaticMethodLoader,
+                    )
+                );
+            }),
+            "validator.mapping.class_metadata_factory" => $app->share(function ($app) {
+                return new ClassMetadataFactory($app['validator.chain_loader']);
+            })
+        ));*/
         $app->mount("/", $app['url_shortener.controller']);
         $app->boot();
         /**
