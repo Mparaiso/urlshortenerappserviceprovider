@@ -1,14 +1,15 @@
-<?php 
+<?php
 
 namespace Mparaiso\Provider;
-use Mparaiso\UrlShortener\Controller\UrlShortenerController;
+use Mparaiso\Shortener\Controller\UrlShortenerController;
+use Mparaiso\Shortener\Service\CountryService;
+use Mparaiso\Shortener\Command\ListLinksCommand;
+use Mparaiso\Shortener\Command\ShortenCommand;
+use Shorten\Command\CountByDaysCommand;
+use Doctrine\ORM\Mapping\Driver\YamlDriver;
 use Silex\ServiceProviderInterface;
 use Silex\Application;
-use Shorten\Service\CountryService;
 use Mparaiso\Shortener\Service\ShortenerService;
-use Mparaiso\Shortener\DataAccessLayer\VisitDataProvider;
-use Mparaiso\Shortener\DataAccessLayer\UrlDataProvider;
-use Mparaiso\Shortener\DataAccessLayer\LinkDataProvider;
 
 
 /**
@@ -23,11 +24,12 @@ use Mparaiso\Shortener\DataAccessLayer\LinkDataProvider;
  * SessionServiceProvider
  * MonologServiceProvider (optional)
  */
-class UrlShortenerAppServiceProvider implements ServiceProviderInterface{
+class UrlShortenerAppServiceProvider implements ServiceProviderInterface
+{
 
     protected $ns;
 
-    function __construct($namespace = "urlshortener")
+    function __construct($namespace = "url_shortener")
     {
         $this->ns = $namespace;
     }
@@ -42,36 +44,15 @@ class UrlShortenerAppServiceProvider implements ServiceProviderInterface{
      */
     public function register(Application $app)
     {
-        $ns=$this->ns;
-        $app["url_shortener.namespace"]=$ns;
-        $app["$ns.templates"]= $app->share(function($app){
-            return require(__DIR__ . "/../Resources/templates/templates.php");
+        $app["url_shortener.ns"]      = $ns = $this->ns;
+        $app["$ns.controller"]        = $app->share(function ($app)use($ns) {
+            return new UrlShortenerController($app[$ns.'.shortener_service'], $app["url_shortener.ns"]);
         });
-        $app["$ns.controller"]=$app->share(function()use($ns){
-            new UrlShortenerController($ns);
+        $app["$ns.shortener_service"] = $app->share(function ($app) {
+            return new ShortenerService($app['orm.em']);
         });
-        $app["$ns.link_provider"]=$app->share(function($app){
-            return new LinkDataProvider($app["em"]);
-        });
-        $app["$ns.url_provider"]=$app->share(function($app){
-            return new UrlDataProvider($app["em"]);
-        });
-        $app["$ns.visit_provider"]=$app->share(function($app){
-            return new VisitDataProvider($app["em"]);
-        });
-        $app["$ns.shortener"]=$app->share(function($app)use($ns){
-            return new ShortenerService($app["$ns.link_provider"],$app["$ns.url_provider"],$app["$ns.visit_provider"]);
-        });
-        $app["$ns.country_service"]=$app->share(function($app)use($ns){
-            return new CountryService($app["$ns.visit_provider"]);
-        });
-        $app["orm.driver.configs"]=$app->extend("orm.driver.configs",function($configs,$app){
-            $configs[]=array(
-                "type"=>"yaml",
-                "namespace"=>'Mparaiso\Shortener\Entity',
-                "paths"=>array(__DIR__.'/../Shortener/Resources/doctrine/'),
-            );
-            return $configs;
+        $app["$ns.country_service"]   = $app->share(function ($app) {
+            return new CountryService($app["orm.em"]);
         });
     }
 
@@ -84,6 +65,22 @@ class UrlShortenerAppServiceProvider implements ServiceProviderInterface{
      */
     public function boot(Application $app)
     {
-        // TODO: Implement boot() method.
+        $app["orm.chain_driver"]->addDriver(new YamlDriver(__DIR__ . '/../Shortener/Resources/doctrine/'),
+            'Mparaiso\Shortener\Entity');
+        $templates = require __DIR__ . "/../Shortener/Resources/templates/templates.php";
+        $twig_temp = $app['twig.templates'];
+        foreach ($templates as $name => $value) {
+            $twig_temp [$this->ns . '_' . $name] = $value;
+        }
+        $app['twig.templates'] = $twig_temp;
+        /* @var $em \Doctrine\ORM\EntityManager */
+        $em = $app["orm.em"];
+        $em->getConfiguration()->addCustomDatetimeFunction("DATE", '\Mparaiso\Doctrine\ORM\Functions\Date');
+        /* @var $cli \Symfony\Component\Console\Application */
+        $cli = $app['console'];
+        $cli->addCommands(array(
+            new ShortenCommand,
+            new ListLinksCommand,
+        ));
     }
 }

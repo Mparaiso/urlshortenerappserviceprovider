@@ -1,6 +1,6 @@
 <?php
 
-namespace Mparaiso\UrlShortener\Model;
+namespace Mparaiso\Shortener\Model;
 
 class ShortenModel{
 	protected $original;

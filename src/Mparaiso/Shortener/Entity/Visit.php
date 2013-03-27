@@ -1,6 +1,6 @@
 <?php
 
-namespace Shorten\Entity;
+namespace Mparaiso\Shortener\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -117,10 +117,10 @@ class Visit
     /**
      * Set link
      *
-     * @param \Shorten\Entity\Link $link
+     * @param Link $link
      * @return Visit
      */
-    public function setLink(\Shorten\Entity\Link $link = null)
+    public function setLink(Link $link = null)
     {
         $this->link = $link;
     
@@ -130,7 +130,7 @@ class Visit
     /**
      * Get link
      *
-     * @return \Shorten\Entity\Link 
+     * @return Link
      */
     public function getLink()
     {

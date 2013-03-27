@@ -1,4 +1,5 @@
 <phpunit
+    stopOnFailure='true'
     bootstrap="tests/Bootstrap.php"
 >
     <testsuites>

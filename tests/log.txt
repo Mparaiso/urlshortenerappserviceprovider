@@ -1,0 +1,189 @@
+[2013-03-27 13:47:23] myapp.INFO: > GET / [] []
+[2013-03-27 13:47:48] myapp.INFO: > GET / [] []
+[2013-03-27 13:49:17] myapp.INFO: > GET / [] []
+[2013-03-27 13:51:27] myapp.INFO: > GET / [] []
+[2013-03-27 13:51:28] myapp.CRITICAL: PHPUnit_Framework_Error_Warning: session_start(): Cannot send session cookie - headers already sent by (output started at C:\Program Files\PHP\5.4\pear\PHPUnit\Util\Printer.php:172) (uncaught exception) at C:\projects\categories\php\libraries\mparaiso-urlshortenerappserviceprovider\vendor\symfony\form\Symfony\Component\Form\Extension\Csrf\CsrfProvider\DefaultCsrfProvider.php line 69 [] []
+[2013-03-27 13:51:28] myapp.INFO: < 500 [] []
+[2013-03-27 13:54:45] myapp.INFO: > GET / [] []
+[2013-03-27 13:54:45] myapp.CRITICAL: Twig_Error_Loader: Template "url_shortener_index" is not defined (). (uncaught exception) at C:\projects\categories\php\libraries\mparaiso-urlshortenerappserviceprovider\vendor\twig\twig\lib\Twig\Loader\Chain.php line 113 [] []
+[2013-03-27 13:54:45] myapp.INFO: < 500 [] []
+[2013-03-27 13:56:59] myapp.INFO: > GET / [] []
+[2013-03-27 13:56:59] myapp.CRITICAL: Twig_Error_Syntax: The function "url" does not exist in "url_shortener_index" at line 4 (uncaught exception) at C:\projects\categories\php\libraries\mparaiso-urlshortenerappserviceprovider\vendor\twig\twig\lib\Twig\ExpressionParser.php line 556 [] []
+[2013-03-27 13:56:59] myapp.INFO: < 500 [] []
+[2013-03-27 13:59:04] myapp.INFO: > GET / [] []
+[2013-03-27 13:59:05] myapp.CRITICAL: Twig_Error_Loader: Template "_layout" is not defined () in "url_shortener_index". (uncaught exception) at C:\projects\categories\php\libraries\mparaiso-urlshortenerappserviceprovider\vendor\twig\twig\lib\Twig\Loader\Chain.php line 113 [] []
+[2013-03-27 13:59:05] myapp.INFO: < 500 [] []
+[2013-03-27 14:00:26] myapp.INFO: > GET / [] []
+[2013-03-27 14:00:28] myapp.CRITICAL: Twig_Error_Syntax: The filter "trans" does not exist in "form_div_layout.html.twig" at line 72 (uncaught exception) at C:\projects\categories\php\libraries\mparaiso-urlshortenerappserviceprovider\vendor\twig\twig\lib\Twig\ExpressionParser.php line 576 [] []
+[2013-03-27 14:00:28] myapp.INFO: < 500 [] []
+[2013-03-27 14:04:31] myapp.INFO: > GET / [] []
+[2013-03-27 14:04:32] myapp.CRITICAL: Twig_Error_Syntax: The filter "trans" does not exist in "form_div_layout.html.twig" at line 72 (uncaught exception) at C:\projects\categories\php\libraries\mparaiso-urlshortenerappserviceprovider\vendor\twig\twig\lib\Twig\ExpressionParser.php line 576 [] []
+[2013-03-27 14:04:32] myapp.INFO: < 500 [] []
+[2013-03-27 14:05:59] myapp.INFO: > GET / [] []
+[2013-03-27 14:06:01] myapp.INFO: < 200 [] []
+[2013-03-27 14:14:18] myapp.INFO: > GET / [] []
+[2013-03-27 14:14:19] myapp.INFO: < 200 [] []
+[2013-03-27 14:15:38] myapp.INFO: > GET / [] []
+[2013-03-27 14:15:39] myapp.INFO: < 200 [] []
+[2013-03-27 14:16:36] myapp.INFO: > GET / [] []
+[2013-03-27 14:16:38] myapp.INFO: < 200 [] []
+[2013-03-27 14:16:38] myapp.INFO: > POST / [] []
+[2013-03-27 14:16:38] myapp.CRITICAL: Twig_Error_Runtime: An exception has been thrown during the rendering of a template ("Unable to generate a URL for the named route "index" as such route does not exist.") in "url_shortener_index" at line 4. (uncaught exception) at C:\projects\categories\php\libraries\mparaiso-urlshortenerappserviceprovider\vendor\twig\twig\lib\Twig\Template.php line 280 [] []
+[2013-03-27 14:16:38] myapp.INFO: < 500 [] []
+[2013-03-27 14:16:53] myapp.INFO: > GET / [] []
+[2013-03-27 14:16:54] myapp.INFO: < 200 [] []
+[2013-03-27 14:16:54] myapp.INFO: > POST / [] []
+[2013-03-27 14:16:55] myapp.CRITICAL: Twig_Error_Runtime: An exception has been thrown during the rendering of a template ("Unable to generate a URL for the named route "index" as such route does not exist.") in "url_shortener_index" at line 4. (uncaught exception) at C:\projects\categories\php\libraries\mparaiso-urlshortenerappserviceprovider\vendor\twig\twig\lib\Twig\Template.php line 280 [] []
+[2013-03-27 14:16:55] myapp.INFO: < 500 [] []
+[2013-03-27 14:19:02] myapp.INFO: > GET / [] []
+[2013-03-27 14:19:03] myapp.CRITICAL: Twig_Error_Syntax: Expected name or number in "url_shortener_index" at line 4 (uncaught exception) at C:\projects\categories\php\libraries\mparaiso-urlshortenerappserviceprovider\vendor\twig\twig\lib\Twig\ExpressionParser.php line 366 [] []
+[2013-03-27 14:19:03] myapp.INFO: < 500 [] []
+[2013-03-27 14:20:14] myapp.INFO: > GET / [] []
+[2013-03-27 14:20:14] myapp.CRITICAL: Twig_Error_Syntax: Expected name or number in "url_shortener_index" at line 4 (uncaught exception) at C:\projects\categories\php\libraries\mparaiso-urlshortenerappserviceprovider\vendor\twig\twig\lib\Twig\ExpressionParser.php line 366 [] []
+[2013-03-27 14:20:14] myapp.INFO: < 500 [] []
+[2013-03-27 14:21:03] myapp.INFO: > GET / [] []
+[2013-03-27 14:21:05] myapp.INFO: < 200 [] []
+[2013-03-27 14:21:05] myapp.INFO: > POST / [] []
+[2013-03-27 14:21:05] myapp.INFO: < 200 [] []
+[2013-03-27 14:24:26] myapp.INFO: > GET / [] []
+[2013-03-27 14:24:27] myapp.INFO: < 200 [] []
+[2013-03-27 14:24:27] myapp.INFO: > POST / [] []
+[2013-03-27 14:24:27] myapp.INFO: < 200 [] []
+[2013-03-27 14:31:42] myapp.INFO: > GET / [] []
+[2013-03-27 14:31:43] myapp.INFO: < 200 [] []
+[2013-03-27 14:31:43] myapp.INFO: > POST / [] []
+[2013-03-27 14:31:44] myapp.INFO: < 200 [] []
+[2013-03-27 14:31:44] myapp.INFO: > POST / [] []
+[2013-03-27 14:31:44] myapp.INFO: < 200 [] []
+[2013-03-27 14:36:07] myapp.INFO: > GET / [] []
+[2013-03-27 14:36:08] myapp.INFO: < 200 [] []
+[2013-03-27 14:36:08] myapp.INFO: > POST / [] []
+[2013-03-27 14:37:17] myapp.INFO: > GET / [] []
+[2013-03-27 14:37:19] myapp.INFO: < 200 [] []
+[2013-03-27 14:37:19] myapp.INFO: > POST / [] []
+[2013-03-27 14:38:17] myapp.INFO: > GET / [] []
+[2013-03-27 14:38:18] myapp.INFO: < 200 [] []
+[2013-03-27 14:38:18] myapp.INFO: > POST / [] []
+[2013-03-27 14:38:18] myapp.INFO: Array
+(
+    [ShortenModel] => Array
+        (
+            [original] => http://yahoo.fr
+            [custom] => 
+            [_token] => 039c6e575b220180097a7c744cf35596c06cf2f0
+        )
+
+)
+ [] []
+[2013-03-27 14:38:19] myapp.INFO: < 200 [] []
+[2013-03-27 14:38:19] myapp.INFO: > POST / [] []
+[2013-03-27 14:38:19] myapp.INFO: Array
+(
+    [ShortenModel] => Array
+        (
+            [original] => http://google.com
+            [custom] => goog
+        )
+
+)
+ [] []
+[2013-03-27 14:38:19] myapp.INFO: < 200 [] []
+[2013-03-27 14:40:22] myapp.INFO: > GET / [] []
+[2013-03-27 14:40:24] myapp.INFO: < 200 [] []
+[2013-03-27 14:40:24] myapp.INFO: > POST / [] []
+[2013-03-27 14:40:24] myapp.INFO: Array
+(
+    [ShortenModel] => Array
+        (
+            [original] => http://yahoo.fr
+            [custom] => 
+            [_token] => 5d36b727133e35ad85aba7e2cd6c24b5c007a417
+        )
+
+)
+ [] []
+[2013-03-27 14:40:24] myapp.INFO: < 200 [] []
+[2013-03-27 14:40:54] myapp.INFO: > GET / [] []
+[2013-03-27 14:40:55] myapp.INFO: < 200 [] []
+[2013-03-27 14:40:55] myapp.INFO: > POST / [] []
+[2013-03-27 14:40:55] myapp.INFO: Array
+(
+    [ShortenModel] => Array
+        (
+            [original] => http://yahoo.fr
+            [custom] => 
+            [_token] => a488117c93dd8b982021b7cb68ed6ea766560a95
+        )
+
+)
+ [] []
+[2013-03-27 14:40:56] myapp.INFO: < 200 [] []
+[2013-03-27 14:40:56] myapp.INFO: > POST / [] []
+[2013-03-27 14:40:56] myapp.INFO: Array
+(
+    [ShortenModel] => Array
+        (
+            [original] => http://google.com
+            [custom] => goog
+            [_token] => a488117c93dd8b982021b7cb68ed6ea766560a95
+        )
+
+)
+ [] []
+[2013-03-27 14:40:56] myapp.INFO: < 200 [] []
+[2013-03-27 14:54:10] myapp.INFO: > GET / [] []
+[2013-03-27 14:54:11] myapp.INFO: < 200 [] []
+[2013-03-27 14:54:11] myapp.INFO: > POST / [] []
+[2013-03-27 14:54:11] myapp.INFO: Array
+(
+    [ShortenModel] => Array
+        (
+            [original] => http://yahoo.fr
+            [custom] => 
+            [_token] => ffdade426eb529412f2df150cf20b83ef98c4d9d
+        )
+
+)
+ [] []
+[2013-03-27 14:54:11] myapp.INFO: < 200 [] []
+[2013-03-27 14:54:11] myapp.INFO: > POST / [] []
+[2013-03-27 14:54:11] myapp.INFO: Array
+(
+    [ShortenModel] => Array
+        (
+            [original] => http://google.com
+            [custom] => goog
+            [_token] => ffdade426eb529412f2df150cf20b83ef98c4d9d
+        )
+
+)
+ [] []
+[2013-03-27 14:54:12] myapp.INFO: < 200 [] []
+[2013-03-27 14:54:36] myapp.INFO: > GET / [] []
+[2013-03-27 14:54:37] myapp.INFO: < 200 [] []
+[2013-03-27 14:54:37] myapp.INFO: > POST / [] []
+[2013-03-27 14:54:37] myapp.INFO: Array
+(
+    [ShortenModel] => Array
+        (
+            [original] => http://yahoo.fr
+            [custom] => 
+            [_token] => 87cb7b986e2436f1d619994117740d124562196e
+        )
+
+)
+ [] []
+[2013-03-27 14:54:37] myapp.INFO: < 200 [] []
+[2013-03-27 14:54:37] myapp.INFO: > POST / [] []
+[2013-03-27 14:54:37] myapp.INFO: Array
+(
+    [ShortenModel] => Array
+        (
+            [original] => http://google.com
+            [custom] => goog
+            [_token] => 87cb7b986e2436f1d619994117740d124562196e
+        )
+
+)
+ [] []
+[2013-03-27 14:54:37] myapp.INFO: < 200 [] []

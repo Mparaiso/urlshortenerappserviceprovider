@@ -1,14 +1,39 @@
 {
-	"require":{
-	"silex/silex":"*@dev",
-	"symfony/validator":"2.2.*",
-	"symfony/form":"2.2.*",
-	"mparaiso/doctrineormserviceprovider":"*@dev",
-	"guzzle/guzzle":"*"
-	},
-	"autoload":{
-		"psr-0":{
-			"":"src"
-		}
-	}
+    "name":"mparaiso/urlshortenerappserviceprovider",
+    "description":"Url Shortener App Service provider",
+    "keywords":[
+        "url shortener",
+        "shortener",
+        "silex"
+    ],
+    "homepage":"https://github.com/Mparaiso/urlshortenerappserviceprovider",
+    "license":"MIT",
+    "authors":[
+        {
+            "name":"MParaiso",
+            "email":"mparaiso@online.fr"
+        }
+    ],
+    "suggest":{},
+    "require":{
+        "php":">=5.3.3",
+        "monolog/monolog":"*",
+        "twig/twig":"*",
+        "silex/silex":"*@dev",
+        "symfony/validator":"2.2.*",
+        "symfony/form":"2.2.*",
+        "mparaiso/doctrineormserviceprovider":"*@dev",
+        "mparaiso/consoleserviceprovider":"*@dev",
+        "symfony/twig-bridge":"2.2.*",
+        "doctrine/orm":"2.*",
+        "symfony/yaml":"2.2.*",
+        "symfony/browser-kit":"2.2.*",
+        "symfony/translation":"2.2.*",
+        "guzzle/guzzle":"*"
+    },
+    "autoload":{
+        "psr-0":{
+            "":"src"
+        }
+    }
 }

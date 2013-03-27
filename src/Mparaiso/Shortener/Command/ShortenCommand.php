@@ -1,6 +1,6 @@
 <?php
 
-namespace Shorten\Command;
+namespace Mparaiso\Shortener\Command;
 
 use Shorten\Service\ShortenerService;
 use Doctrine\Common\Util\Debug;
@@ -13,28 +13,31 @@ use Symfony\Component\Process\ProcessBuilder;
 
 class ShortenCommand extends Command
 {
-	/**
-	 * @var Shorten\Service\ShortenerService $shortener
-	 */
-	protected $shortener;
-	function __construct(ShortenerService $shortener,$name=null){
-		parent::__construct($name);
-		$this->shortener = $shortener;
-	}
-	
+    /**
+     * @var Shorten\Service\ShortenerService $shortener
+     */
+    protected $shortener;
+
+    function __construct($name = NULL)
+    {
+        parent::__construct($name);
+    }
+
     protected function configure()
     {
         $this
-	        ->addArgument("url",InputArgument::REQUIRED,"the url to shroten")
-	        ->addOption("custom","c",InputArgument::OPTIONAL,"a custom shortened link")
-	        ->setName('app:shorten')
-	        ->setDescription('Shorten a url');
+            ->addArgument("url", InputArgument::REQUIRED, "the url to shroten")
+            ->addOption("custom", "c", InputArgument::OPTIONAL, "a custom shortened link")
+            ->setName('app:shorten')
+            ->setDescription('Shorten a url');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-       $link = $this->shortener
-       	->shorten($input->getArgument("url"),$input->getOption("custom"));
-       $output->writeln(Debug::dump($link));
+        $app  = $this->getHelper("app")->getApplication();
+        $ns   = $app["url_shortener.ns"];
+        $link = $app[$ns . 'shortener_service']
+            ->shorten($input->getArgument("url"), $input->getOption("custom"));
+        $output->writeln(Debug::dump($link));
     }
 }

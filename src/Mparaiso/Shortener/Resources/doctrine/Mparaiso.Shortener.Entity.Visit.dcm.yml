@@ -1,8 +1,8 @@
-# Shorten.Entity.Visit.dcm.yml
-Shorten\Entity\Visit:
+# Mparaiso\Shortener.Entity.Visit.dcm.yml
+Mparaiso\Shortener\Entity\Visit:
   type: entity
   table: shorten_visits
-  repositoryClass: Shorten\Entity\VisitRepository
+  #repositoryClass: Mparaiso\Shortener\Entity\VisitRepository
   id:
     id:
       type: integer
@@ -19,7 +19,8 @@ Shorten\Entity\Visit:
       length: 256
   manyToOne:
     link:
-      targetEntity: Shorten\Entity\Link
+      targetEntity: Mparaiso\Shortener\Entity\Link
       inversedBy: visits
+      cascade: [all]
 
 

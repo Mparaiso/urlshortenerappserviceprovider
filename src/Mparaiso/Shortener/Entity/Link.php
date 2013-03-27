@@ -34,7 +34,7 @@ class Link
     private $visits;
 
     /**
-     * @var \Shorten\Entity\Url
+     * @var Url
      */
     private $url;
 
@@ -128,10 +128,10 @@ class Link
     /**
      * Add visits
      *
-     * @param \Shorten\Entity\Visit $visits
+     * @param Visit $visits
      * @return Link
      */
-    public function addVisit(\Shorten\Entity\Visit $visits)
+    public function addVisit(Visit $visits)
     {
         $this->visits[] = $visits;
     
@@ -141,9 +141,9 @@ class Link
     /**
      * Remove visits
      *
-     * @param \Shorten\Entity\Visit $visits
+     * @param Visit $visits
      */
-    public function removeVisit(\Shorten\Entity\Visit $visits)
+    public function removeVisit(Visit $visits)
     {
         $this->visits->removeElement($visits);
     }
@@ -161,10 +161,10 @@ class Link
     /**
      * Set url
      *
-     * @param \Shorten\Entity\Url $url
+     * @param Url $url
      * @return Link
      */
-    public function setUrl(\Shorten\Entity\Url $url = null)
+    public function setUrl(Url $url = null)
     {
         $this->url = $url;
     
@@ -174,7 +174,7 @@ class Link
     /**
      * Get url
      *
-     * @return \Shorten\Entity\Url 
+     * @return Url
      */
     public function getUrl()
     {

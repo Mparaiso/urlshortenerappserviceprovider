@@ -30,7 +30,7 @@ $templates["layout"] = <<<EOD
 		<div class="container">
 		{% block head %}<h1>Url Shortener</h1>{% endblock %}
 		{% block flash %}
-		{% include 'flash' %}
+		{% include app['url_shortener.ns']~'_flash' %}
 		{% endblock %}
 		{% block content %}{%endblock%}
 		</div>
@@ -39,10 +39,10 @@ $templates["layout"] = <<<EOD
 EOD;
 
 $templates["index"]= <<<EOD
-{% extends "layout" %}
+{% extends app['url_shortener.ns']~'_layout' %}
 {% block content %}
 	{% if link is not null %}
-			{% set url = url("index") ~ link.identifier %}
+			{% set url = url( app['url_shortener.ns'] ~ "_index" ) ~ link.identifier %}
 		<h4>
 			{{link.url.getOriginal()}} has been shortened to {{url }}
 		</h4>
@@ -54,14 +54,14 @@ $templates["index"]= <<<EOD
 		Shorten this : 
 		<form method="POST">
 			{{ form_widget(form) }}
-		<input type="submit" value="Shorten" />
+		<input type="submit" value="Shorten" id='submit'/>
 	</form>
 	</div>
 {% endblock %}
 EOD;
 
 $templates["info"]= <<<EOD
-{% extends "layout" %}
+{% extends app['url_shortener.ns']~'_layout' %}
 {% block content %}
 <div>Original : {{link.url.original}}</div>
 <div>Shortened : {{url("index")~link.identifier}}</div>

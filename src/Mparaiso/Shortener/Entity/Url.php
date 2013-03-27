@@ -68,10 +68,10 @@ class Url
     /**
      * Add links
      *
-     * @param \Shorten\Entity\Link $links
+     * @param Link $links
      * @return Url
      */
-    public function addLink(\Shorten\Entity\Link $links)
+    public function addLink(Link $links)
     {
         $this->links[] = $links;
     
@@ -83,7 +83,7 @@ class Url
      *
      * @param \Shorten\Entity\Link $links
      */
-    public function removeLink(\Shorten\Entity\Link $links)
+    public function removeLink(Link $links)
     {
         $this->links->removeElement($links);
     }

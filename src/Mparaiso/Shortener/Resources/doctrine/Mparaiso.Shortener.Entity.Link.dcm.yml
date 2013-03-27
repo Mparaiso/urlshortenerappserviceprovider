@@ -1,8 +1,8 @@
 # Shorten.Entity.Url.dcm.yml
-Shorten\Entity\Link:
+Mparaiso\Shortener\Entity\Link:
   type: entity
   table: shorten_links
-  repositoryClass: Shorten\Entity\LinkRepository
+  #repositoryClass: Mparaiso\Shortener\Entity\LinkRepository
   indexes:
     identifier_index:
       columns: [ identifier ]
@@ -21,11 +21,12 @@ Shorten\Entity\Link:
       type: datetime
   manyToOne:
     url:
-      targetEntity: Shorten\Entity\Url
+      targetEntity: Mparaiso\Shortener\Entity\Url
       inversedBy: links
+      cascade: [all]
   oneToMany:
     visits:
       mappedBy: link
-      targetEntity: Shorten\Entity\Visit
+      targetEntity: Mparaiso\Shortener\Entity\Visit
       cascade: [all]
         

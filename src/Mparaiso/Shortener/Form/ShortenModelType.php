@@ -1,6 +1,6 @@
 <?php
 
-namespace Mparaiso\UrlShortener\Form;
+namespace Mparaiso\Shortener\Form;
 
 use Symfony\Component\Form\FormBuilderInterface;
 

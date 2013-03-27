@@ -3,141 +3,130 @@
 namespace Mparaiso\Shortener\Service;
 
 use Psr\Log\NullLogger;
+use Mparaiso\Shortener\Entity\Visit;
+use Mparaiso\Shortener\Entity\Link;
+use Mparaiso\Shortener\Entity\Url;
 use Psr\Log\LoggerInterface;
-use Shorten\Entity\Visit;
 use Guzzle\Http\Client;
-use Shorten\DataAccessLayer\VisitDataProvider;
-use Shorten\DataAccessLayer\UrlDataProvider;
-use Shorten\DataAccessLayer\LinkDataProvider;
-use Shorten\Entity\Url;
-use Shorten\Entity\Link;
 use Doctrine\ORM\EntityManager;
-use Shorten\Entity\LinkRepository;
 
-class ShortenerService {
-	
-	/**
-	 * @var \Psr\Log\LoggerInterface
-	 */
-	protected $logger;
-	protected $ldp;
-	protected $udp;
-	protected $vdp;
-	
-	function __construct(LinkDataProvider $ldp, UrlDataProvider $udp,
-			VisitDataProvider $vdp) {
-		$this->ldp = $ldp;
-		$this->udp = $udp;
-		$this->vdp = $vdp;
-	}
+class ShortenerService
+{
 
-	/**
-	 * FR : raccourci une url
-	 * @param string $original
-	 * @param string $custom
-	 * @return \Shorten\Entity\Link
-	 */
-	function shorten($original, $custom = null) {
-		$url = $this->udp->findOneBy(array("original" => $original));
-		if ($url == null) {
-			$url = new Url();
-			$url->setOriginal($original);
-			$this->udp->save($url);
-		}
-		if ($custom != null) {
-			// FR : si le link custom existe d�ja , le retourner
-			/* @var $link \Shorten\Entity\Link  */
-			$link = $this->ldp
-					->findOneBy(
-							array("identifier" => $custom, "is_custom" => true,
-									'url' => $url));
-			if ($link != null)
-				return $link;
-			$identifier = $custom;
-			$isCustom = true;
-		} else {
-			// FR : base 36 encoding
-			$identifier = base_convert($url->getId(), 10, 36);
-			$isCustom = false;
-		}
-		/* @var $link \Shorten\Entity\Link  */
+    protected $logger;
+    protected $em;
+
+    function __construct(EntityManager $em)
+    {
+        $this->em = $em;
+    }
+
+    //FR : raccourci une url
+    function shorten($original, $custom = NULL)
+    {
+	    $url = $this->em->getRepository('Mparaiso\Shortener\Entity\Url')->findOneBy(array("original" => $original));
+		if ($url == NULL) {
+            $url = new Url();
+            $url->setOriginal($original);
+            $this->em->persist($url);
+            $this->em->flush();
+        }
+		if ($custom != NULL) {
+            // FR : si le link custom existe déja , le retourner
+            $link = $this->em->getRepository('Mparaiso\Shortener\Entity\Link')
+                ->findOneBy(
+                array("identifier" => $custom, "is_custom" => TRUE,
+                      'url'        => $url));
+            if ($link != NULL)
+                return $link;
+            $identifier = $custom;
+            $isCustom   = TRUE;
+        } else {
+            // FR : base 36 encoding
+            $identifier = base_convert($url->getId(), 10, 36);
+            $isCustom   = FALSE;
+        }
 		$link = new Link();
 		$link->setIsCustom($isCustom);
 		$link->setIdentifier($identifier);
 		$link->setCreatedAt(new \DateTime);
 		$link->setUrl($url);
-		return $this->ldp->save($link);
+		 $this->em->persist($link);
+		 $this->em->flush();
+		 return $link;
 	}
-	function findOneLinkByIdentifier($identifier) {
-		return $this->ldp->findOneByIdentifier($identifier);
-	}
-	/**
-	 * FR : obtenir les liens
-	 * @param array $criteral
-	 * @param array $orderBy
-	 * @param number $limit
-	 * @param number $offset
-	 */
-	function findAllLinks($criteral = null, $orderBy = null, $limit = null,
-			$offset = null) {
-		return $this->ldp->findAll($criteral, $orderBy, $limit, $offset);
-	}
-	/**
-	 * FR : incr�mente le nombre de visites d'un line
-	 * @param Link $link
-	 * @param unknown $ip
-	 * @return \Shorten\Entity\Link
-	 */
-	function addVisit(Link $link, $ip) {
-		$visit = new Visit;
-		$visit->setIp($ip);
-		$visit->setCreatedAt(new \DateTime);
-		$visit->setCountry($this->getCountryFromIp($ip));
-		$visit->setLink($link);
-		$this->saveVisit($visit);
-		return $link;
-	}
-	function setLogger(LoggerInterface $logger){
-		$this->logger = $logger;
-	}
-	function getLogger(){
-		if (!isset($this->logger)){
-			$this->logger = new \NullLogger;
-		}
-		return $this->logger;
-	}
-	/**
-	 * FR : sauve une visite
-	 * @param Visit $visit
-	 */
-	function saveVisit(Visit $visit){
-		$this->vdp->save($visit);
-	}
-	/**
-	 * FR : sauve un lien
-	 * @param Link $link
-	 * @return \Shorten\Entity\Link
-	 */
-	function saveLink(Link $link) {
-		$this->ldp->save($link);
-		return $link;
-	}
-	/**
-	 * FR : obtient le code d'un pays grace � une ip
-	 * @param string $ip
-	 * @return string
-	 */
-	function getCountryFromIp($ip) {
-		try {
-			$client = new Client("http://api.hostip.info/?ip={{ip}}",array("ip" => $ip));
-			$responseBody = $client->get()->send()->getBody(true);
-			$xml = new \DOMDocument();
-			$xml->loadXML($responseBody);
-			$country = $xml->getElementsByTagName("countryAbbrev")->item(0)->nodeValue;
-		} catch (Exception $e) {
-			$this->getLogger()->emergency($e->getMessage());
-			$country = "XX";
-		}
-		return $country;
-	}
+
+    /**
+     * @param $identifier
+     * @return Link
+     */
+    function findOneLinkByIdentifier($identifier)
+    {
+        return $this->em->getRepository('Mparaiso\Shortener\Entity\Link')->findOneBy(array('identifier' => $identifier));
+    }
+
+    // FR : obtenir les liens
+    function findAllLinks(array $criteria = array(), $orderBy = NULL, $limit = NULL,
+                          $offset = NULL)
+    {
+        return $this->em->getRepository('Mparaiso\Shortener\Entity\Link')->findBy($criteria, $orderBy, $limit, $offset);
+    }
+
+    //FR : incrémente le nombre de visites d'un lien
+    function addVisit(Link $link, $ip)
+    {
+        $visit = new Visit;
+        $visit->setIp($ip);
+        $visit->setCreatedAt(new \DateTime);
+        $visit->setCountry($this->getCountryFromIp($ip));
+        $link->addVisit($visit);
+        $this->em->persist($visit);
+        $this->em->flush();
+        return $link;
+    }
+
+    function setLogger(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+    }
+
+    function getLogger()
+    {
+        if (!isset($this->logger)) {
+            $this->logger = new NullLogger();
+        }
+        return $this->logger;
+    }
+
+    //FR : sauve une visite
+    function saveVisit(Visit $visit)
+    {
+        $this->em->persist($visit);
+        $this->em->flush();
+        return $visit;
+    }
+
+    // FR : sauve un lien
+    function saveLink(Link $link)
+    {
+        $this->em->persist($link);
+        $this->em->flush();
+        return $link;
+    }
+
+    //FR : obtient le code d'un pays grace à une ip
+    function getCountryFromIp($ip)
+    {
+        try {
+            $client       = new Client("http://api.hostip.info/?ip={{ip}}", array("ip" => $ip));
+            $responseBody = $client->get()->send()->getBody(TRUE);
+            $xml          = new \DOMDocument();
+            $xml->loadXML($responseBody);
+            $country = $xml->getElementsByTagName("countryAbbrev")->item(0)->nodeValue;
+        } catch (\Exception $e) {
+            $this->getLogger()->warning($e->getMessage());
+            $country = "XX";
+        }
+        return $country;
+    }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Shorten\Command;
+namespace Mparaiso\Shortener\Command;
 
 use Symfony\Component\Console\Input\InputArgument;
 use Doctrine\ORM\Mapping\MappingException;

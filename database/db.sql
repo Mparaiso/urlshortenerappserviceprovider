@@ -1,0 +1,7 @@
+CREATE TABLE shorten_links (id INTEGER NOT NULL, url_id INTEGER DEFAULT NULL, is_custom BOOLEAN NOT NULL, identifier VARCHAR(256) NOT NULL, created_at DATETIME NOT NULL, PRIMARY KEY(id));
+CREATE INDEX IDX_13319CFC81CFDAE7 ON shorten_links (url_id);
+CREATE INDEX identifier_index ON shorten_links (identifier);
+CREATE TABLE shorten_urls (id INTEGER NOT NULL, original VARCHAR(255) NOT NULL, PRIMARY KEY(id));
+CREATE UNIQUE INDEX UNIQ_4E56741D2F727085 ON shorten_urls (original);
+CREATE TABLE shorten_visits (id INTEGER NOT NULL, link_id INTEGER DEFAULT NULL, created_at DATETIME NOT NULL, ip VARCHAR(128) NOT NULL, country VARCHAR(256) NOT NULL, PRIMARY KEY(id));
+CREATE INDEX IDX_E3EDACB6ADA40271 ON shorten_visits (link_id);

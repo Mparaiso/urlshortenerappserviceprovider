@@ -1,6 +1,6 @@
 <?php
 
-namespace Shorten\Command;
+namespace Mparaiso\Shortener\Command;
 
 use Symfony\Component\Process\Process;
 use Symfony\Component\Console\Input\InputArgument;
@@ -12,9 +12,8 @@ use Symfony\Component\Process\ProcessBuilder, Symfony\Component\Console\Input\In
 use Shorten\Service\ShortenerService;
 class ListLinksCommand extends Command {
 	protected $shortener;
-	function __construct(ShortenerService $shortener, $name = null) {
+	function __construct($name = null) {
 		parent::__construct($name);
-		$this->shortener = $shortener;
 	}
 	protected function configure() {
 		$this->setName('app:link:list')
@@ -29,7 +28,8 @@ class ListLinksCommand extends Command {
 	protected function execute(InputInterface $input, OutputInterface $output) {
 		/* @var $shortener \Shorten\Service\ShortenerService */
 		$app = $this->getHelper("app")->getApplication();
-		$shortener = $this->shortener;
+		$ns = $app['url_shortener.ns'];
+		$shortener = $app[$ns.'snortener_service'];
 		$links = $shortener
 				->findAllLinks(null, null, $input->getOption("limit"), null);
 		$output
