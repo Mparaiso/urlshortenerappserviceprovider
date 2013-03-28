@@ -31,7 +31,6 @@
         "symfony/config":"2.2.*",
         "symfony/browser-kit":"2.2.*",
         "symfony/translation":"2.2.*",
-        "guzzle/guzzle":"3.*"
     },
     "autoload":{
         "psr-0":{

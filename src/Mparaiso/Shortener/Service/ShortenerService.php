@@ -3,7 +3,7 @@
 namespace Mparaiso\Shortener\Service;
 
 use Psr\Log\NullLogger;
-use Guzzle\Http\Client;
+//use Guzzle\Http\Client;
 use Mparaiso\Shortener\Entity\Visit;
 use Mparaiso\Shortener\Entity\Link;
 use Mparaiso\Shortener\Entity\Url;
@@ -115,9 +115,10 @@ class ShortenerService
     }
 
     //FR : obtient le code d'un pays grace à une ip
+    #@TODO fix it
     function getCountryFromIp($ip)
     {
-        try {
+        /*try {
             $client       = new Client("http://api.hostip.info/?ip={{ip}}", array("ip" => $ip));
             $responseBody = $client->get()->send()->getBody(TRUE);
             $xml          = new \DOMDocument();
@@ -126,7 +127,9 @@ class ShortenerService
         } catch (\Exception $e) {
             $this->getLogger()->warning($e->getMessage());
             $country = "XX";
-        }
-        return $country;
+           return $country;
+
+        }*/
+        return "XX";
     }
 }
