@@ -424,3 +424,34 @@ SQLSTATE[HY000]: General error: 1 no such table: url_shortener_urls (uncaught ex
 )
  [] []
 [2013-03-27 16:31:59] myapp.INFO: < 200 [] []
+[2013-03-28 13:03:00] myapp.INFO: Matched route "url_shortener_index" (parameters: "_controller": "[{},"_index"]", "_route": "url_shortener_index") [] []
+[2013-03-28 13:03:00] myapp.INFO: > GET / [] []
+[2013-03-28 13:03:06] myapp.INFO: < 200 [] []
+[2013-03-28 13:03:07] myapp.INFO: Matched route "url_shortener_index" (parameters: "_controller": "[{},"_index"]", "_route": "url_shortener_index") [] []
+[2013-03-28 13:03:07] myapp.INFO: > POST / [] []
+[2013-03-28 13:03:07] myapp.INFO: Array
+(
+    [ShortenModel] => Array
+        (
+            [original] => http://yahoo.fr
+            [custom] => 
+            [_token] => 9cc7d7bde5dd425e611a2e2e51fb6fd160b39a88
+        )
+
+)
+ [] []
+[2013-03-28 13:03:08] myapp.INFO: < 200 [] []
+[2013-03-28 13:03:08] myapp.INFO: Matched route "url_shortener_index" (parameters: "_controller": "[{},"_index"]", "_route": "url_shortener_index") [] []
+[2013-03-28 13:03:08] myapp.INFO: > POST / [] []
+[2013-03-28 13:03:08] myapp.INFO: Array
+(
+    [ShortenModel] => Array
+        (
+            [original] => http://google.com
+            [custom] => goog
+            [_token] => 9cc7d7bde5dd425e611a2e2e51fb6fd160b39a88
+        )
+
+)
+ [] []
+[2013-03-28 13:03:08] myapp.INFO: < 200 [] []
