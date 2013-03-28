@@ -3,11 +3,11 @@
 namespace Mparaiso\Shortener\Service;
 
 use Psr\Log\NullLogger;
+use Guzzle\Http\Client;
 use Mparaiso\Shortener\Entity\Visit;
 use Mparaiso\Shortener\Entity\Link;
 use Mparaiso\Shortener\Entity\Url;
 use Psr\Log\LoggerInterface;
-use Guzzle\Http\Client;
 use Doctrine\ORM\EntityManager;
 
 class ShortenerService
